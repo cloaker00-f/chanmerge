@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name="chanmerge",                            
-    version="1.0.2",                             
-    author="Ahmet Sercan Kıyak",
+    version="1.1.0",                             
+    author="Ahmet Sercan Kıyak & Berra Dülgerbaki",
     author_email="a.sercankyk@gmail.com",
     description="Automated Chandra X-ray Data Pipeline and Merger",
     long_description=open('README.md').read(),   
