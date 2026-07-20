@@ -201,12 +201,12 @@ def auto_merge_obs(ra=None, dec=None, radius_arcmin=None, energy_band="broad", o
     print("\n[2/4] Downloading primary data...")
     
     for obsid in standard_obs:
-        print(f"  -> Downloading Standard ObsID: {obsid}, {standard_obs.index(obsid)}")
+        print(f"  -> Downloading Standard ObsID: {obsid}, ({standard_obs.index(obsid) + 1}/{len(standard_obs)})")
         subprocess.run(f"download_chandra_obsid {obsid}", shell=True, check=True, cwd=outdir)
 
     if download_grating:
         for obsid in grating_obs:
-            print(f"  -> Downloading Grating ObsID: {obsid}, {grating_obs.index(obsid)}")
+            print(f"  -> Downloading Grating ObsID: {obsid}, ({grating_obs.index(obsid) + 1}/{len(grating_obs)})")
             subprocess.run(f"download_chandra_obsid {obsid}", shell=True, check=True, cwd=outdir)
             
             old_path = os.path.join(outdir, obsid)
