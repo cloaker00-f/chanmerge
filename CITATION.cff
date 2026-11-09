@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use chanmerge, please cite it as below."
+title: "chanmerge"
+type: software
+version: 2.0.0.dev0
+abstract: "Finds, downloads, reprocesses and merges Chandra X-ray Observatory observations into exposure-corrected flux images, grouped in time, with tables that say exactly what was done to every image. Built for dust scattering halo work."
+authors:
+  - family-names: "Kıyak"
+    given-names: "Ahmet Sercan"
+    alias: "cloaker00-f"
+    affiliation: "Boğaziçi University, Department of Physics"
+  - family-names: "Dülgerbaki"
+    given-names: "Berra"
+    alias: "berradbb"
+    affiliation: "Boğaziçi University, Department of Physics"
+repository-code: "https://github.com/cloaker00-f/chanmerge"
+license: MIT
+keywords:
+  - Chandra
+  - X-ray astronomy
+  - dust scattering halos
