@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use chanmerge, please cite it as below."
 title: "chanmerge"
 type: software
-version: 2.0.0.dev0
+version: 2.0.0
 abstract: "Finds, downloads, reprocesses and merges Chandra X-ray Observatory observations into exposure-corrected flux images, grouped in time, with tables that say exactly what was done to every image. Built for dust scattering halo work."
 authors:
   - family-names: "Kıyak"

@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="chanmerge",
-    version="2.0.0.dev0",
+    version="2.0.0",
     author="Ahmet Sercan Kıyak & Berra Dülgerbaki",
     author_email="a.sercankyk@gmail.com",
     description="Chandra search, reprocessing and time-grouped merged flux images with documented corrections",

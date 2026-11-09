@@ -1,5 +1,5 @@
 """chanmerge 2.0: merged, exposure-corrected Chandra flux images for dust scattering halo work."""
-__version__ = "2.0.0.dev0"
+__version__ = "2.0.0"
 
 from .plan import RunPlan, Observation, Category, Group, RowSet, Band, ChipSet, ChipChoice  # noqa: F401
 from .check import check_plan  # noqa: F401

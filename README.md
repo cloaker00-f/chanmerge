@@ -8,7 +8,7 @@ exposure-corrected flux images, grouped in time, with tables that say exactly wh
 It was built for dust scattering halo (DSH) work, where merging observations far apart in time, grating arms,
 readout streaks and chip-class steps can all mislead an analysis, so every one of these is a visible choice.
 
-Version 2.0 (in development: `2.0.0.dev0`). It breaks 1.x usage: prompts, layout, file names and the Python API changed.
+Version 2.0.0. It breaks 1.x usage: prompts, layout, file names and the Python API changed.
 
 ---
 
