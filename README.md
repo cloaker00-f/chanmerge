@@ -8,6 +8,9 @@ exposure-corrected flux images, grouped in time, with tables that say exactly wh
 It was built for dust scattering halo (DSH) work, where merging observations far apart in time, grating arms,
 readout streaks and chip-class steps can all mislead an analysis, so every one of these is a visible choice.
 
+Chanmerge is part of the **Chandra Archival Fluxed Image Generation (CAFIG)** project, which turns the Chandra archive into flux images
+for a machine-learning search for dust scattering halos.
+
 Version 2.0.0. It breaks 1.x usage: prompts, layout, file names and the Python API changed.
 
 ---
