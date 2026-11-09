@@ -166,6 +166,30 @@ after moving or deleting run folders.
 
 ---
 
+## Tested on
+
+Chanmerge 2.0.0 was run on real Chandra observations (most of them downloaded and reprocessed by chanmerge itself; CIAO 4.18, macOS). This is a record of what was checked, not a guarantee for other data, other CIAO versions or other systems.
+
+- **Unit tests:** 293 in `tests/`; they need neither CIAO nor network (`python -m pytest -q tests`).
+- **Real-CIAO checks on local data:** `CHANMERGE_CIAO_TESTS=1 python -m pytest -q tests/test_ciao_local.py`.
+
+| Case | Observations | What was checked |
+|---|---|---|
+| ACIS, no grating, readout streak | 950 (GX 13+1, ACIS-I), 9052 (IGR J18134-1636, ACIS-I), 6688 (ACIS-S), 17704 (V404 Cyg) | Chip sets, grouping, the streak search and its treatments (`acisreadcorr`, fill, mask). A streak was found only in 950; after `acisreadcorr` the excess of the streak strip over the same-radius expectation fell from 30x to 5.6x at 300-600 arcsec. The corrected merged event list equals `merge_obs`'s list minus the original events plus the corrected ones, exactly. |
+| HETG, full frame | 27522 (Cen X-3), 17701, 16703, 16704 (V404 Cyg) | The four grating-arm options, the arm fill, and arm light that leaks outside the CIAO arm box (measured on Cen X-3 and subtracted: edge-zone ratio 1.4-1.6 before, 1.0-1.1 after). Filled V404 images: arm-box / outside-ring ratios 0.94-1.06. A real streak on 27522 together with the arm treatment. |
+| HETG, subarray | 7490 (128 rows), 16702 (V404 Cyg, 512 rows) | The warning shown at the arm question. 16702: the arm boxes cover about a quarter of the exposed pixels within 240 arcsec of the source, and option 4 leaves 0.3% of the strip without data. 7490: 69% without data, as the warning says. |
+| Full frame and subarray in one group | 16702 + 16703 + 16704 (V404 Cyg) | Arm options 2-4, a different option per row, unknown modes (Ocat unreachable). The rate of filled pixels over untouched pixels stays within about 1 sigma of 1 at 30-480 arcsec. |
+| LETG | PKS 2155-304 (1790, 1796, 1797, 2324), Capella (55), NGC 4151 (3089), BD+30 3639 (8498), SN 1987A (9591), Mrk 421 (23307, 23309; 128 rows), XTE J0929-314 (3661), Spica (4509) | LETG arm band width chosen per observation (CIAO's default box can cover the whole image and darken it), a visibility check (no visible arm: nothing is masked), leak subtraction, observations whose band covers most of the image leave their group, two LETG or LETG + HETG in one group, and grating exposure maps (grating / non-grating effective area matches the CALDB factors). |
+| HRC | 8225 + 8226 (Cyg X-2, HRC-I), 14323 + 14324 (Mrk 421, HRC-S with LETG) | Merging two observations: counts and exposure maps equal the sum of the members, exposure is the dead-time corrected live time, the source sits at the right position. |
+| Continuous clocking (CC) | 13197 (GX 13+1, HETG), 1225 (Capella, LETG), 22110 + 22111 (Sco X-1, HETG), 6136 + 6137 (M87, ACIS-I) | CC found from the headers, no flux image for CC, and the question whether to delete data downloaded in this run (answered yes and no). |
+| Archive and headers | GX 13+1 search (3 arcmin: 27 rows, 16 kept) | HEASARC and Ocat search, archive sizes, mode and window read from the headers (the header wins over Ocat), Ocat unreachable (simulated, and once for real). |
+| Paths | 8225 (HRC-I) | Characters in the root path and the folder name, tried with `chandra_repro`, `merge_obs`, `tgdetect2` and `tg_create_mask`; the lists of refused and warned characters come from these runs. |
+| Window | the V404 Cyg set, a GX 13+1 set | The Tk window was driven by script against real runs and produced the same files as the terminal flow. |
+
+**Not tested:** a group with several readout streaks on real data, the ACIS S0 and S5 chips as the source chip, other CIAO versions and operating systems, and long manual sessions in the window and the viewer (a first version).
+
+**How to read the results:** the arm and streak fills are statistical (Poisson draws at the rate measured in the surrounding clean pixels), not measured photons. Every filled pixel is flagged in the mask and in the corrected event files, so an analysis can leave them out.
+
 ## Authors
 **Ahmet Sercan Kıyak** ([@cloaker00-f](https://github.com/cloaker00-f)) **& Berra Dülgerbaki** ([@berradbb](https://github.com/berradbb))
 *Boğaziçi University, Department of Physics*
